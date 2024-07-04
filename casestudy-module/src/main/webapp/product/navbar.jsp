@@ -23,7 +23,8 @@
                     <a class="nav-link" href="about.html">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
+                    <a class="nav-link" href="cart.jsp"><span class="material-symbols-outlined">shopping_bag
+</span></a>
                 </li>
             </ul>
             <form class="d-flex" id="search">
