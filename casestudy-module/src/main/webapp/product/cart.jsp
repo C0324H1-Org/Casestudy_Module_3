@@ -27,6 +27,14 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 
 <body>
+<div class="top-navbar">
+    <p>WELCOME TO ORANGE SHOP</p>
+    <div class="icons">
+        <span class="material-symbols-outlined">
+person
+</span>
+    </div>
+</div>
 <jsp:include page="navbar.jsp"></jsp:include>
 <br>
 
