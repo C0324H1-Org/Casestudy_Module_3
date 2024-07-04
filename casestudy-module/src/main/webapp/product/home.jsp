@@ -15,6 +15,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 </head>
 <body>
 <jsp:include page="navbar.jsp"></jsp:include>
@@ -51,11 +64,18 @@
                         <i class="fa-solid fa-star checked"></i>
                         <i class="fa-solid fa-star checked"></i>
                     </div>
-                    <h2>$1000 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
+                    <h2>$1000 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    <span class="material-symbols-outlined">add_shopping_cart
+</span>
+                    </button>
+
+                 </h2>
+
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 <section class="home">
     <div class="content">
@@ -147,6 +167,52 @@
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 <a href="#" class="arrow"><i><img src="/images/arrow.png" alt=""></i></a>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+<%--          form nằm đây      --%>
+            <form>
+            <div class="modal-header">
+                <h4 class="modal-title">Add Employee</h4>
+
+            </div>
+            <div class="modal-body">
+                <div class="container" id="product-cards2">
+                    <h1 class="text-center">IPhones</h1>
+                    <div class="col-12" style="text-align: center; ">
+
+                        <img src="/images/iphone%2013%20pro.png" alt="">
+                        <h3 class="text-center">Iphone 13 pro
+                            Lorem ipsum dolor sit amet.</h3>
+                        <div class="star text-center">
+                            <i class="fa-solid fa-star checked"></i>
+                            <i class="fa-solid fa-star checked"></i>
+                            <i class="fa-solid fa-star checked"></i>
+                            <i class="fa-solid fa-star checked"></i>
+                            <i class="fa-solid fa-star checked"></i>
+                        </div>
+                        <h2>$1000 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
+
+
+                    </div>
+                    <div class="row" style="margin-top: 30px;">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success" data-bs-toggle="modal" >
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                </button>
+            </div>
+            </form>
+
+        </div>
+    </div>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </html>
