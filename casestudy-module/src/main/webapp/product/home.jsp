@@ -23,13 +23,22 @@
             font-variation-settings: 'FILL' 0,
             'wght' 400,
             'GRAD' 0,
-            'opsz' 24
+            'opsz' 48
         }
     </style>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 </head>
 <body>
+<div class="top-navbar">
+    <p>WELCOME TO ORANGE SHOP</p>
+    <div class="icons">
+       <span class="material-symbols-outlined">
+person
+</span>
+
+    </div>
+</div>
 <jsp:include page="navbar.jsp"></jsp:include>
 <section class="home">
     <div class="content">
