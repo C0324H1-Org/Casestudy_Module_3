@@ -1,4 +1,4 @@
-package com.codegym.phonestore.model;
+package com.codegym.istore.model;
 
 public class Customer {
 

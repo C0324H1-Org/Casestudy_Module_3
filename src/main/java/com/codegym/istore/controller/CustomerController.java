@@ -1,8 +1,8 @@
-package com.codegym.phonestore.controller;
+package com.codegym.istore.controller;
 
-import com.codegym.phonestore.model.Product;
-import com.codegym.phonestore.service.impl.ProductService;
-import com.codegym.phonestore.service.IProductService;
+import com.codegym.istore.model.Product;
+import com.codegym.istore.service.impl.ProductService;
+import com.codegym.istore.service.IProductService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -51,10 +51,10 @@ public class CustomerController extends HttpServlet {
         switch (action) {
             case "addCustomer":
                 break;
-                case "editCustomer":
-                    break;
-                    case "deleteCustomer":
-                        break;
+            case "editCustomer":
+                break;
+            case "deleteCustomer":
+                break;
         }
     }
 

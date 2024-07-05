@@ -1,9 +1,9 @@
-package com.codegym.phonestore.service.impl;
+package com.codegym.istore.service.impl;
 
-import com.codegym.phonestore.model.Product;
-import com.codegym.phonestore.repository.IProductRepository;
-import com.codegym.phonestore.repository.impl.ProductRepository;
-import com.codegym.phonestore.service.IProductService;
+import com.codegym.istore.model.Product;
+import com.codegym.istore.repository.IProductRepository;
+import com.codegym.istore.repository.impl.ProductRepository;
+import com.codegym.istore.service.IProductService;
 
 import java.sql.SQLException;
 import java.util.List;

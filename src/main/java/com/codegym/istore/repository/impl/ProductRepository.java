@@ -1,7 +1,7 @@
-package com.codegym.phonestore.repository.impl;
+package com.codegym.istore.repository.impl;
 
-import com.codegym.phonestore.model.Product;
-import com.codegym.phonestore.repository.IProductRepository;
+import com.codegym.istore.model.Product;
+import com.codegym.istore.repository.IProductRepository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
