@@ -27,7 +27,6 @@ public class ProductRepositories implements IProductRepositories {
     private static final String DELETE_PRODUCT_DETAIL = "CALL casestudy_module_3.delete_all_product();";
     private static final String ORDER_BY_NAME_DESC = "select * from users ORDER BY name DESC;";
     private static final String ORDER_BY_NAME_ASC = "select * from users ORDER BY name ASC;";
-    private static final String DELETE_BY_ID = "CALL casestudy_module_3.DeleteOrderAndDetails(?)";
 
 
     @Override
@@ -73,7 +72,6 @@ public class ProductRepositories implements IProductRepositories {
         List<CartDetailDTO> cartDetailDTOs = new ArrayList<>();
         try (PreparedStatement preparedStatement = BaseRepositories.getConnection().prepareStatement(SELECT_CART_DETAIL)) {
             ResultSet resultSet = preparedStatement.executeQuery();
-            int id;
             String image;
             String productName;
             String producer;
@@ -86,7 +84,6 @@ public class ProductRepositories implements IProductRepositories {
             String customerAddress;
             int quantily;
             while (resultSet.next()) {
-                id = resultSet.getInt("order_id");
                 image = resultSet.getString("image");
                 productName = resultSet.getString("name");
                 producer = resultSet.getString("producer");
@@ -97,7 +94,7 @@ public class ProductRepositories implements IProductRepositories {
                 customerName = resultSet.getString("customer_name");
                 customerPhone = resultSet.getString("customer_phone");
                 customerAddress = resultSet.getString("customer_address");
-                cartDetailDTOs.add(new CartDetailDTO(id,image, productName, producer, ram, rom, color, price, customerName, customerPhone, customerAddress));
+                cartDetailDTOs.add(new CartDetailDTO(image, productName, producer, ram, rom, color, price, customerName, customerPhone, customerAddress));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -222,20 +219,5 @@ public class ProductRepositories implements IProductRepositories {
         }
         return products;
         }
-
-    @Override
-    public boolean DeleteOder(int id) {
-        boolean result;
-        try {
-            PreparedStatement preparedStatement = BaseRepositories.getConnection().prepareStatement(DELETE_BY_ID);
-            preparedStatement.setInt(1, id);
-            result = preparedStatement.executeUpdate()>0;
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return result;
-
     }
-}
 

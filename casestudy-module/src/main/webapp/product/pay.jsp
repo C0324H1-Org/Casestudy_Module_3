@@ -51,7 +51,7 @@
             margin-bottom: 20px;
         }
 
-        .btn {
+        .abc {
             display: inline-block;
             padding: 10px 20px;
             background-color: #4caf50;
@@ -61,7 +61,7 @@
             transition: background-color 0.3s;
         }
 
-        .btn:hover {
+        .abc:hover {
             background-color: #45a049;
         }
 
@@ -72,7 +72,7 @@
     <div class="notification">
         <h2>Đặt hàng thành công!</h2>
         <p>Cảm ơn bạn đã đặt hàng của chúng tôi.</p>
-        <a href="istore" class="btn">Quay lại trang chủ</a>
+        <a href="istore" class="abc">Quay lại trang chủ</a>
     </div>
 </div>
 </body>

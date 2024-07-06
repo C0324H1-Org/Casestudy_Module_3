@@ -85,11 +85,6 @@ public class CustomerController extends HttpServlet {
                 }
                 break;
             case "deleteCustomer":
-                try {
-                    deleteProduct(request, response);
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
                 break;
         }
     }
@@ -121,7 +116,6 @@ public class CustomerController extends HttpServlet {
 
         ProductDetail productDetail = new ProductDetail(productId, ram, rom, color, display, camera, battery);
         productService.buyProduct(productDetail);
-
     }
 
     private void oders(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
@@ -129,7 +123,7 @@ public class CustomerController extends HttpServlet {
         int customerId = productService.searchByIdCustomer();
         Oder oder = new Oder(customerId, productId);
         productService.pushOder(oder);
-        response.sendRedirect("/istore?action=product");
+        response.sendRedirect("/istore");
     }
 
     private void cartList(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
@@ -151,13 +145,5 @@ public class CustomerController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/pay.jsp");
         dispatcher.forward(request, response);
 
-    }
-    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        int productId = Integer.parseInt(request.getParameter("productId"));
-
-        boolean isDelete = productService.DeleteOder(productId);
-        if (isDelete) {
-            response.sendRedirect("/istore?action=cart");
-        }
     }
 }

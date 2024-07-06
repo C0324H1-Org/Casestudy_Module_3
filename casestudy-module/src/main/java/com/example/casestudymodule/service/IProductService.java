@@ -26,6 +26,4 @@ public interface IProductService {
     List<Product> selectAll();
 
     List<Product> search(String search);
-    boolean DeleteOder(int id);
-
 }

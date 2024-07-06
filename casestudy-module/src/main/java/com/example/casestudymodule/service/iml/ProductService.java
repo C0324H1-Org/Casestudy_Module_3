@@ -58,9 +58,4 @@ public class ProductService implements IProductService {
     public List<Product> search(String search) {
         return productRepositories.search(search);
     }
-
-    @Override
-    public boolean DeleteOder(int id) {
-        return productRepositories.DeleteOder(id);
-    }
 }
