@@ -981,9 +981,9 @@ person
                 </select>
             </span>
         </th>
-<%--        <th scope="col">Customer Name</th>--%>
-<%--        <th scope="col">Customer Phone</th>--%>
-<%--        <th scope="col">Customer Address</th>--%>
+<%--        <th scope="col">User Name</th>--%>
+<%--        <th scope="col">User Phone</th>--%>
+<%--        <th scope="col">User Address</th>--%>
         <th scope="col">Quantily</th>
 
     </tr>

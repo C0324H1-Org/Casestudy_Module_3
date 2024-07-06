@@ -1,4 +1,4 @@
-package com.example.casestudymodule.repositories;
+package com.example.casestudymodule.repository;
 
 import com.example.casestudymodule.model.CartDetailDTO;
 import com.example.casestudymodule.model.Oder;
@@ -8,7 +8,7 @@ import com.example.casestudymodule.model.ProductDetail;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface IProductRepositories {
+public interface IProductRepository {
 
     List<Product> selectAll() throws SQLException;
 

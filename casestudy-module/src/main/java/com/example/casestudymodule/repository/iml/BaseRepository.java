@@ -1,14 +1,14 @@
-package com.example.casestudymodule.repositories.iml;
+package com.example.casestudymodule.repository.iml;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class BaseRepositories {
+public class BaseRepository {
 
     private static String jdbcURL = "jdbc:mysql://localhost:3306/casestudy_module_3?useSSL=false";
     private static String jdbcUsername = "root";
-    private static String jdbcPassword = "0339198933ky";
+    private static String jdbcPassword = "12345678";
     private static Connection connection = null;
     static {
         try {
@@ -21,7 +21,7 @@ public class BaseRepositories {
         }
     }
 
-    private BaseRepositories() {
+    private BaseRepository() {
     }
 
     public static Connection getConnection() {
