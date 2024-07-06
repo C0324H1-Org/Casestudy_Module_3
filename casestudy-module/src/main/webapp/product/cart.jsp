@@ -1008,39 +1008,36 @@ person
                 <button class="quantity btn-outline-dark" onclick="increaseNumber(this)">+</button>
             </td>
             <td>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProduct${cart.id}">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete${cart.id}">
                     <span class="material-symbols-outlined">delete</span>
-
                 </button>
-                <div class="modal fade" id="deleteProduct${cart.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-
-                            <div class="modal-header">
-                                <h4 class="modal-title">Delete </h4>
-                            </div>
-                            <div class="modal-body">
-                                <span class="material-symbols-outlined" style="color: #ffc800">warning</span>
-                                <p>Are you sure you want to delete these Records?</p>
-                                <p class="text-warning"><small>This action cannot be undone.</small></p>
-                            </div>
-
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <form action="/istore?action=deleteCustomer" method="post">
-                                    <input type="hidden" name="productId" value="${cart.id}">
-                                    <button type="submit" class="btn btn-primary">Xác nhận</button>
-
-                                </form>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
             </td>
         </tr>
+        <div class="modal fade" id="delete${cart.id}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Delete </h4>
+                        </div>
+                        <div class="modal-body">
+                            <span class="material-symbols-outlined" style="color: #ffc800">warning</span>
+                            <p>Are you sure you want to delete the product?</p>
+                            <img src="${cart.image}" width="500px" height="400px" alt=""/>
+                            <p class="text-warning"><small>This action cannot be undone!</small></p>
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <form action="istore?action=deleteCustomer" method="post" >
+                                <input type="hidden" value="${cart.id}" name="productId"/>
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                        </div>
+                </div>
+            </div>
+        </div>
 
     </c:forEach>
     <div>
@@ -1048,7 +1045,6 @@ person
     </div>
     </tbody>
 </table>
-
 
 <form  action="istore?action=pay" method="post" >
     <div>
@@ -1119,6 +1115,5 @@ person
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-
 
 </html>

@@ -27,4 +27,10 @@ public interface IProductRepositories {
     List<Product> selectAllItem();
 
     List<Product> search(String search);
+
+    void deletePay();
+
+    void deleteAll();
+
+    boolean DeleteOder(int id);
 }

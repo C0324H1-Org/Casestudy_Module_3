@@ -17,7 +17,7 @@ public class CartDetailDTO {
         public CartDetailDTO() {
         }
 
-        public CartDetailDTO(String image, String nameProduct, String producer, String ram, String rom, String color, int price, String customerName, String phone, String address) {
+        public CartDetailDTO(String image, String nameProduct, String producer, String ram, String rom, String color, int price, String customerName, String phone, String address, int id) {
             this.image = image;
             this.nameProduct = nameProduct;
             this.producer = producer;
@@ -28,24 +28,11 @@ public class CartDetailDTO {
             this.customerName = customerName;
             this.phone = phone;
             this.address = address;
+            this.id = id;
 
         }
 
-    public CartDetailDTO(int id, String image, String nameProduct, String producer, String ram, String rom, String color, int price, String customerName, String phone, String address) {
-        this.id = id;
-        this.image = image;
-        this.nameProduct = nameProduct;
-        this.producer = producer;
-        this.ram = ram;
-        this.rom = rom;
-        this.color = color;
-        this.price = price;
-        this.customerName = customerName;
-        this.phone = phone;
-        this.address = address;
-    }
-
-    public int getId() {
+        public int getId() {
             return id;
         }
 

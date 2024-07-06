@@ -25,8 +25,7 @@ public class ProductRepositories implements IProductRepositories {
     private static final String SELECT_SEARCH = "SELECT * FROM casestudy_module_3.product WHERE product_name LIKE ?";
     private static final String DELETE_CART = "CALL  casestudy_module_3.delete_all_orders();";
     private static final String DELETE_PRODUCT_DETAIL = "CALL casestudy_module_3.delete_all_product();";
-    private static final String ORDER_BY_NAME_DESC = "select * from users ORDER BY name DESC;";
-    private static final String ORDER_BY_NAME_ASC = "select * from users ORDER BY name ASC;";
+    private static final String DELETE_BY_ID = "CALL casestudy_module_3.DeleteOrderDetails(?);";
 
 
     @Override
@@ -82,7 +81,7 @@ public class ProductRepositories implements IProductRepositories {
             String customerName;
             String customerPhone;
             String customerAddress;
-            int quantily;
+            int id;
             while (resultSet.next()) {
                 image = resultSet.getString("image");
                 productName = resultSet.getString("name");
@@ -94,7 +93,8 @@ public class ProductRepositories implements IProductRepositories {
                 customerName = resultSet.getString("customer_name");
                 customerPhone = resultSet.getString("customer_phone");
                 customerAddress = resultSet.getString("customer_address");
-                cartDetailDTOs.add(new CartDetailDTO(image, productName, producer, ram, rom, color, price, customerName, customerPhone, customerAddress));
+                id = resultSet.getInt("id");
+                cartDetailDTOs.add(new CartDetailDTO(image, productName, producer, ram, rom, color, price, customerName, customerPhone, customerAddress, id));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -219,5 +219,39 @@ public class ProductRepositories implements IProductRepositories {
         }
         return products;
         }
+
+    @Override
+    public void deletePay() {
+
+        try (PreparedStatement preparedStatement = BaseRepositories.getConnection().prepareStatement(DELETE_CART)) {
+            boolean delete = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    @Override
+    public void deleteAll() {
+        try (PreparedStatement preparedStatement = BaseRepositories.getConnection().prepareStatement(DELETE_PRODUCT_DETAIL)) {
+            boolean delete = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public boolean DeleteOder(int id) {
+        boolean result;
+        try {
+            PreparedStatement preparedStatement = BaseRepositories.getConnection().prepareStatement(DELETE_BY_ID);
+            preparedStatement.setInt(1, id);
+            result = preparedStatement.executeUpdate()>0;
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
+
+    }
+}
 
