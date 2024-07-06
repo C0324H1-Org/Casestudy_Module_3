@@ -219,24 +219,5 @@ public class ProductRepositories implements IProductRepositories {
         }
         return products;
         }
-
-    @Override
-    public void deletePay() {
-
-        try (PreparedStatement preparedStatement = BaseRepositories.getConnection().prepareStatement(DELETE_CART)) {
-            boolean delete = preparedStatement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
     }
-
-    @Override
-    public void deleteAll() {
-        try (PreparedStatement preparedStatement = BaseRepositories.getConnection().prepareStatement(DELETE_PRODUCT_DETAIL)) {
-            boolean delete = preparedStatement.executeUpdate() > 0;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-}
 
