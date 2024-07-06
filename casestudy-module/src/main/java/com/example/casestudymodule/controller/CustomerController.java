@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "CustomerController", urlPatterns = "/istore")
@@ -80,11 +79,24 @@ public class CustomerController extends HttpServlet {
             case "pay":
                 try {
                     payProduct(request, response);
+                    deletePay(request, response);
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
                 break;
-            case "deleteCustomer":
+            case "iphone":
+                try {
+                    listIphone(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case "macbook":
+                try {
+                    listMacbook(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
         }
     }
@@ -95,6 +107,20 @@ public class CustomerController extends HttpServlet {
         List<Product> listProductMac = productService.selectAllProductMac();
         request.setAttribute("listProductMac", listProductMac);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/home.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void listIphone(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        List<Product> listProduct = productService.selectAllProduct();
+        request.setAttribute("listProduct", listProduct);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/product.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void listMacbook(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        List<Product> listProduct = productService.selectAllProductMac();
+        request.setAttribute("listProduct", listProduct);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/product.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -145,5 +171,10 @@ public class CustomerController extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/pay.jsp");
         dispatcher.forward(request, response);
 
+    }
+
+    private void deletePay(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        productService.deletePay();
+        productService.deleteAll();
     }
 }

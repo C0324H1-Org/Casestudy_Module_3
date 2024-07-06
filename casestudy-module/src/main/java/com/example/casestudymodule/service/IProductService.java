@@ -26,4 +26,8 @@ public interface IProductService {
     List<Product> selectAll();
 
     List<Product> search(String search);
+
+    void deletePay();
+
+    void deleteAll();
 }

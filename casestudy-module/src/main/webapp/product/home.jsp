@@ -1006,9 +1006,9 @@ person
                                             <h3 class="text-center">${product.productName}</h3>
                                             <div class="star text-center">
                                                 <select name="color">
-                                                    <option value="1">Đỏ</option>
-                                                    <option value="2">Xanh</option>
-                                                    <option value="3">Xanh lá</option>
+                                                    <option value="1">Red</option>
+                                                    <option value="2">Dark green</option>
+                                                    <option value="3">Green</option>
                                                 </select>
                                                 <select name="ram">
                                                     <option value="1">4G</option>
@@ -1114,9 +1114,9 @@ person
                                             <h3 class="text-center">${mac.productName}</h3>
                                             <div class="star text-center">
                                                 <select name="color">
-                                                    <option value="1">Đỏ</option>
-                                                    <option value="2">Xanh</option>
-                                                    <option value="3">Xanh lá</option>
+                                                    <option value="1">Grey</option>
+                                                    <option value="2">Rough black</option>
+                                                    <option value="3">Silver</option>
                                                 </select>
                                                 <select name="ram">
                                                     <option value="1">4G</option>
@@ -1129,9 +1129,9 @@ person
                                                     <option value="3">1T</option>
                                                 </select>
                                             </div>
-                                            <input type="hidden" name="display" value="6.7 inch">Display : 6.7 inch</input><br>
-                                            <input type="hidden" name="battery" value="4500 mah">Battery: 4500 mah</input><br>
-                                            <input type="hidden" name="camera" value="40 MP">Camera: 40 PM</input>
+                                            <input type="hidden" name="display" value="6.7 inch">Display : 2k</input><br>
+                                            <input type="hidden" name="battery" value="4500 mah">Chip: M3 pro</input><br>
+                                            <input type="hidden" name="camera" value="40 MP">Powerful configuration </input>
                                             <h2>${mac.price} <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
                                         </div>
                                     </div>

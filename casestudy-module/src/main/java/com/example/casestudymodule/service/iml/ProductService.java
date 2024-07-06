@@ -58,4 +58,14 @@ public class ProductService implements IProductService {
     public List<Product> search(String search) {
         return productRepositories.search(search);
     }
+
+    @Override
+    public void deletePay() {
+        productRepositories.deletePay();
+    }
+
+    @Override
+    public void deleteAll() {
+        productRepositories.deleteAll();
+    }
 }

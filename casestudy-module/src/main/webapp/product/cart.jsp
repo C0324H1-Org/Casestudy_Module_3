@@ -903,6 +903,47 @@
         }
 
         /* contact */
+        .quantity {
+            width: 30px;
+        }
+        .product-price {
+            width: 150px;
+        }
+        .sort-price-container {
+            display: inline-block;
+            position: relative;
+        }
+
+        .sort-price-container select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-color: #f5f5f5;
+            color: #333;
+            padding: 8px 30px 8px 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .sort-price-container select::-ms-expand {
+            display: none;
+        }
+
+        .sort-price-container select option {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .sort-price-container select:hover {
+            background-color: #e0e0e0;
+        }
+
+        .sort-price-container select:focus {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
 
     </style>
     <link rel="stylesheet"
@@ -925,16 +966,21 @@ person
 <table style="margin-top: 50px; margin-bottom: 50px; text-align: center; vertical-align: middle" class="table table-striped table-hover">
     <thead>
     <tr>
-        <th scope="col"># <select>SortBy
-            <option></option>
-        </select></th>
+        <th scope="col">STT</th>
         <th scope="col">image</th>
         <th scope="col">Product Name</th>
         <th scope="col">Producer</th>
         <th scope="col">Ram</th>
         <th scope="col">Rom</th>
         <th scope="col">Color</th>
-        <th scope="col">Price</th>
+        <th scope="col">Price
+            <span class="sort-price-container">
+                <select id="sortPrice" onchange="sortProducts()">
+                    <option value="asc">Up</option>
+                    <option value="desc">Down</option>
+                </select>
+            </span>
+        </th>
 <%--        <th scope="col">Customer Name</th>--%>
 <%--        <th scope="col">Customer Phone</th>--%>
 <%--        <th scope="col">Customer Address</th>--%>
@@ -942,7 +988,7 @@ person
 
     </tr>
     </thead>
-    <tbody>
+    <tbody  id="productTableBody">
     <c:forEach var="cart" items="${cartDetailDTOS}" varStatus="status">
         <tr>
             <td>${status.count}</td>
@@ -957,9 +1003,9 @@ person
 <%--            <td>${cart.phone}</td>--%>
 <%--            <td>${cart.address}</td>--%>
             <td>
-                <input type="number" class="quantityInput" value="1" data-price="${cart.price}">
-                <button onclick="decreaseNumber(this)">-</button>
-                <button onclick="increaseNumber(this)">+</button>
+                <button class="quantity btn-outline-dark" onclick="decreaseNumber(this)">-</button>
+                <input style="width: 40px; padding-left: 10px" type="text" class="quantityInput" value="1" data-price="${cart.price}">
+                <button class="quantity btn-outline-dark" onclick="increaseNumber(this)">+</button>
             </td>
             <td>
                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProduct">
@@ -1000,7 +1046,7 @@ person
 </div>
 <form  action="istore?action=pay" method="post" >
     <div>
-        <button style="display: block;margin-left: auto; background: green" type="button" class="btn btn-primary"
+        <button style="display: block;margin-left: auto; background: #2a8e2a" type="button" class="btn btn-primary"
                 data-bs-toggle="modal" data-bs-target="#exampleModal">
             <span class="material-symbols-outlined">payments<p>Pay</p></span>
         </button>
@@ -1014,47 +1060,50 @@ person
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form>
+                        <form id="paymentForm" action="#" method="post" novalidate>
                             <div class="mb-3">
                                 <label for="exampleInputName" class="form-label">First and last name</label>
-                                <input type="text" name="name" class="form-control" id="exampleInputName" aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">We'll never share your info with anyone else.</div>
+                                <input type="text" name="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" required>
+                                <div id="nameHelp" class="form-text">We'll never share your info with anyone else.</div>
+                                <div class="invalid-feedback">Please enter your name.</div>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputPhone" class="form-label">Phone number</label>
-                                <input type="text" name="phone" class="form-control" id="exampleInputPhone">
+                                <input type="tel" name="phone" class="form-control" id="exampleInputPhone" pattern="[0-9]{10}" required>
+                                <div class="invalid-feedback">Please enter a valid 10-digit phone number.</div>
                             </div>
                             <div class="mb-3">
                                 <label for="exampleInputAddress" class="form-label">Delivery address</label>
-                                <input type="text" name="address" class="form-control" id="exampleInputAddress">
+                                <input type="text" name="address" class="form-control" id="exampleInputAddress" required>
+                                <div class="invalid-feedback">Please enter your delivery address.</div>
                             </div>
-                            <div class="dropdown">
+                            <div class="dropdown mb-3">
                                 <a id="dropdownMenuLink" name="method" class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Payment methods
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#" onclick="selectPaymentMethod('Domestic bank card')" style="color: black" >Domestic bank card</a></li>
-                                    <li><a class="dropdown-item" href="#" onclick="selectPaymentMethod('Visa card')" style="color: black" >Visa card</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="selectPaymentMethod('Domestic bank card')" style="color: black">Domestic bank card</a></li>
+                                    <li><a class="dropdown-item" href="#" onclick="selectPaymentMethod('Visa card')" style="color: black">Visa card</a></li>
                                 </ul>
                             </div>
-                            <p></p>
-
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Agree to store policies</label>
-                                </div>
-                                <div><h4>Total price: <span id="totalPrice1"></span></h4></div>
+                            <div class="mb-3 form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                <label class="form-check-label" for="exampleCheck1">Agree to store policies</label>
+                                <div class="invalid-feedback">You must agree to the store policies.</div>
+                            </div>
+                            <div><h4>Total price: <span id="totalPrice1"></span></h4></div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">
+                                    Complete Payment
+                                </button>
+                            </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">
-                            complete payment
-                        </button>
                     </div>
                 </div>
             </div>
         </div>
+
         <span class="material-symbols-outlined">
 </span>
     </div>

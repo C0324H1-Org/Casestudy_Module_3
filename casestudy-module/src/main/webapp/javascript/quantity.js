@@ -61,3 +61,30 @@
     function selectPaymentMethod(paymentMethod) {
         document.getElementById('dropdownMenuLink').innerText = paymentMethod;
     }
+
+    function sortProducts() {
+        let sortDirection = document.getElementById("sortPrice").value;
+        let rows = Array.from(document.querySelectorAll("#productTableBody tr"));
+
+        rows.sort(function(rowA, rowB) {
+            let priceA = parseFloat(rowA.querySelector(".product-price").textContent);
+            let priceB = parseFloat(rowB.querySelector(".product-price").textContent);
+
+            if (sortDirection === "asc") {
+                return priceA - priceB;
+            } else {
+                return priceB - priceA;
+            }
+        });
+
+        // Xóa tất cả các hàng hiện có trong bảng
+        let tbody = document.getElementById("productTableBody");
+        tbody.innerHTML = "";
+
+        // Thêm lại các hàng đã sắp xếp vào bảng
+        rows.forEach(function(row) {
+            tbody.appendChild(row);
+        });
+    }
+
+

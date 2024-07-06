@@ -912,7 +912,13 @@
         }
 
         /* contact */
-
+        .iconbuy {
+            background: white;
+            height: 35px;
+        }
+        .iconbuy:hover {
+            background: #9f9e9e;
+        }
     </style>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
@@ -929,18 +935,28 @@ person
 </div>
 <%@ include file="/product/navbar.jsp" %>
 <div class="container">
+    <div class="d-grid gap-2 d-md-block m-3">
+        <div class="d-flex">
+            <form action="istore?action=iphone" method="post">
+                <button type="submit" class="btn btn-outline-dark"><img src="iphone/iphone15pro.png" alt="" width="30px" height="40px"/>Iphone</button>
+            </form>
+            <form action="istore?action=macbook" method="post">
+                <button type="submit" class="btn btn-outline-dark"><img src="mac/mac16.png" alt="" width="30px" height="40px"/>MacBook</button>
+            </form>
+        </div>
+    </div>
     <div class="row">
         <c:forEach var="product" items="${listProduct}">
             <div class="col-md-3 py-3 py-md-0">
                     <div class="card">
-                        <img src="${product.image}" class="card-img-top" alt="...">
+                        <img src="${product.image}" height="300px" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">${product.productName}</h5>
                             <p class="card-text">${product.description}</p>
                             <div>
                                 <button style="display: flex;margin-left: auto" type="button" class="btn btn-success iconbuy"  data-bs-toggle="modal"
                                         data-bs-target="#buyProduct${product.productId}">
-                                    <span class="material-symbols-outlined ">add_shopping_cart</span>
+                                    <span class="material-symbols-outlined " style="color: #0c0c0b">add_shopping_cart</span>
                                 </button>
                             </div>
                             <span class="card-text">${product.price}</span>
@@ -967,9 +983,9 @@ person
                                             <h3 class="text-center">${product.productName}</h3>
                                             <div class="star text-center">
                                                 <select name="color">
-                                                    <option value="1">Đỏ</option>
-                                                    <option value="2">Xanh</option>
-                                                    <option value="3">Xanh lá</option>
+                                                    <option value="1">Red</option>
+                                                    <option value="2">Rough black</option>
+                                                    <option value="3">Green</option>
                                                 </select>
                                                 <select name="ram">
                                                     <option value="1">4G</option>
@@ -983,6 +999,8 @@ person
                                                 </select>
                                             </div>
                                             <input type="hidden" name="display" value="6.7 inch">Display : 6.7
+
+
                                             inch</input><br>
                                             <input type="hidden" name="battery" value="4500 mah">Battery: 4500
                                             mah</input><br>
@@ -998,7 +1016,7 @@ person
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-success iconbuy" data-bs-toggle="modal"
+                                <button type="submit" class="btn btn-outline-dark" style="width: 80px; height: 35px" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">
                                     <span class="material-symbols-outlined ">add_shopping_cart</span>
                                 </button>
