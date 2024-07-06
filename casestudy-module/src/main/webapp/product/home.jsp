@@ -906,7 +906,7 @@
 
         /* contact */
         .iphone {
-            width : 50%;
+            width: 50%;
             height: 70%;
         }
     </style>
@@ -939,7 +939,7 @@ person
 
     </div>
     <div class="img">
-        <img src="/images/iphone-15-pro-gold-1-2-650x650.png.webp" alt="">
+        <img src="/images/iphone15promax.png.webp" alt="">
     </div>
 </section>
 
@@ -962,20 +962,75 @@ person
                             <i class="fa-solid fa-star checked"></i>
                         </div>
                         <h2>${product.price}$
-                            <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop">
-    <span class="material-symbols-outlined">add_shopping_cart
-</span>
-                            </button>
+                            <span class="material-symbols-outlined">add_shopping_cart</span>
+                            <form action="oder?action=${product.id}" method="post">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop">
+                                    <input type="hidden" name="id" value="${product.productId}">
+                                    <input type="hidden" name="name" value="${product.productName}">
+                                    <input type="hidden" name="description" value="${product.description}">
+                                    <input type="hidden" name="image" value="${product.image}">
+
+                                </button>
+                            </form>
 
                         </h2>
 
                     </div>
                 </div>
             </div>
+            <%--            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"--%>
+            <%--                 aria-labelledby="staticBackdropLabel" aria-hidden="true">--%>
+            <%--                <div class="modal-dialog">--%>
+            <%--                    <div class="modal-content">--%>
+            <%--                            &lt;%&ndash;          form nằm đây      &ndash;%&gt;--%>
+            <%--                        <form>--%>
+            <%--                            <div class="modal-header">--%>
+            <%--                                <h4 class="modal-title">Add Employee</h4>--%>
+
+            <%--                            </div>--%>
+            <%--                            <div class="modal-body">--%>
+            <%--                                <div class="container" id="product-cards2">--%>
+            <%--                                    <h1 class="text-center">IPhones</h1>--%>
+            <%--                                    <div class="col-12" style="text-align: center; ">--%>
+
+            <%--                                        <img src="${product.image}" alt="">--%>
+            <%--                                        <h3 class="text-center">${product.productName}</h3>--%>
+            <%--                                        <p class="text-center">${product.producer}</p>--%>
+            <%--                                        <p class="text-center">${product.description}</p>--%>
+            <%--                                        <div class="star text-center">--%>
+            <%--                                            <i class="fa-solid fa-star checked"></i>--%>
+            <%--                                            <i class="fa-solid fa-star checked"></i>--%>
+            <%--                                            <i class="fa-solid fa-star checked"></i>--%>
+            <%--                                            <i class="fa-solid fa-star checked"></i>--%>
+            <%--                                            <i class="fa-solid fa-star checked"></i>--%>
+            <%--                                        </div>--%>
+            <%--                                        <h2>${product.price} <span><li class="fa-solid fa-cart-shopping"></li></span></h2>--%>
+
+
+            <%--                                    </div>--%>
+            <%--                                    <div class="row" style="margin-top: 30px;">--%>
+
+            <%--                                    </div>--%>
+            <%--                                </div>--%>
+            <%--                            </div>--%>
+            <%--                            <div class="modal-footer">--%>
+            <%--                                <form action="/oder?action=addCart" method="post">--%>
+            <%--                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--%>
+            <%--                                    <button type="submit" class="btn btn-success" data-bs-toggle="modal">--%>
+            <%--                                        <span class="material-symbols-outlined">add_shopping_cart</span>--%>
+            <%--                                    </button>--%>
+            <%--                                </form>--%>
+            <%--                            </div>--%>
+            <%--                        </form>--%>
+
+            <%--                    </div>--%>
+            <%--                </div>--%>
+            <%--            </div>--%>
         </c:forEach>
     </div>
 </div>
+
 <section class="home">
     <div class="content">
         <h1><span>LapTop</span>
@@ -988,7 +1043,6 @@ person
         <div class="btn">
             <button>Shop Now</button>
         </div>
-
     </div>
     <div class="img">
         <img src="/images/0025006_macbook-pro-13-inch-m2-10-core-8gb-ram-256gb-ssd-chinh-hang-cu-dep.png" alt="">
@@ -1069,51 +1123,7 @@ person
 <jsp:include page="footer.jsp"></jsp:include>
 <a href="#" class="arrow"><i><img src="/images/arrow.png" alt=""></i></a>
 
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <%--          form nằm đây      --%>
-            <form>
-                <div class="modal-header">
-                    <h4 class="modal-title">Add Employee</h4>
 
-                </div>
-                <div class="modal-body">
-                    <div class="container" id="product-cards2">
-                        <h1 class="text-center">IPhones</h1>
-                        <div class="col-12" style="text-align: center; ">
-
-                            <img src="/images/iphone%2013%20pro.png" alt="">
-                            <h3 class="text-center">Iphone 13 pro
-                                Lorem ipsum dolor sit amet.</h3>
-                            <div class="star text-center">
-                                <i class="fa-solid fa-star checked"></i>
-                                <i class="fa-solid fa-star checked"></i>
-                                <i class="fa-solid fa-star checked"></i>
-                                <i class="fa-solid fa-star checked"></i>
-                                <i class="fa-solid fa-star checked"></i>
-                            </div>
-                            <h2>$1000 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
-
-
-                        </div>
-                        <div class="row" style="margin-top: 30px;">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" data-bs-toggle="modal">
-                        <span class="material-symbols-outlined">add_shopping_cart</span>
-                    </button>
-                </div>
-            </form>
-
-        </div>
-    </div>
-</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
