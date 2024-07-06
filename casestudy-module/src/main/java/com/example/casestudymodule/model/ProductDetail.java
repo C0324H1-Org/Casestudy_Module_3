@@ -14,8 +14,18 @@ public class ProductDetail {
     public ProductDetail() {
     }
 
-    public ProductDetail(int productDetailId, int productId, int productRamId, int productRomId, int productColorId, String display, String camera, String battery) {
+    public ProductDetail(int productDetailId, int productId, int productRamId, int productRomId, int productColorId , String display, String camera, String battery) {
         this.productDetailId = productDetailId;
+        this.productId = productId;
+        this.productRamId = productRamId;
+        this.productRomId = productRomId;
+        this.productColorId = productColorId;
+        this.display = display;
+        this.camera = camera;
+        this.battery = battery;
+    }
+
+    public ProductDetail(int productId, int productRamId, int productRomId, int productColorId , String display, String camera, String battery) {
         this.productId = productId;
         this.productRamId = productRamId;
         this.productRomId = productRomId;
