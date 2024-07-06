@@ -1,6 +1,9 @@
 package com.example.casestudymodule.controller;
 
+import com.example.casestudymodule.model.CartDetailDTO;
+import com.example.casestudymodule.model.Oder;
 import com.example.casestudymodule.model.Product;
+import com.example.casestudymodule.model.ProductDetail;
 import com.example.casestudymodule.service.IProductService;
 import com.example.casestudymodule.service.iml.ProductService;
 
@@ -12,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "CustomerController", urlPatterns = "/istore")
@@ -26,11 +30,19 @@ public class CustomerController extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "addCustomer":
+            case "product":
+                try {
+                    listProductAll(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
-            case "editCustomer":
-                break;
-            case "deleteCustomer":
+            case "cart":
+                try {
+                    cartList(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             default:
                 try {
@@ -49,19 +61,103 @@ public class CustomerController extends HttpServlet {
             action = "";
         }
         switch (action) {
-            case "addCustomer":
+            case "buy":
+                try {
+                    buyProduct(request, response);
+                    oders(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+
                 break;
-                case "editCustomer":
-                    break;
-                    case "deleteCustomer":
-                        break;
+            case "search":
+                try {
+                    searchProduct(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case "pay":
+                try {
+                    payProduct(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case "deleteCustomer":
+                try {
+                    deleteProduct(request, response);
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
         }
     }
 
     private void listProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Product> listProduct = productService.selectAllProduct();
         request.setAttribute("listProduct", listProduct);
+        List<Product> listProductMac = productService.selectAllProductMac();
+        request.setAttribute("listProductMac", listProductMac);
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/home.jsp");
         dispatcher.forward(request, response);
+    }
+
+    private void listProductAll(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        List<Product> listProduct = productService.selectAll();
+        request.setAttribute("listProduct", listProduct);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/product.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void buyProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int productId = Integer.parseInt(request.getParameter("productId"));
+        int ram = Integer.parseInt(request.getParameter("ram"));
+        int rom = Integer.parseInt(request.getParameter("rom"));
+        int color = Integer.parseInt(request.getParameter("color"));
+        String display = request.getParameter("display");
+        String camera = request.getParameter("camera");
+        String battery = request.getParameter("battery");
+
+        ProductDetail productDetail = new ProductDetail(productId, ram, rom, color, display, camera, battery);
+        productService.buyProduct(productDetail);
+
+    }
+
+    private void oders(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int productId = productService.searchByIdProduct();
+        int customerId = productService.searchByIdCustomer();
+        Oder oder = new Oder(customerId, productId);
+        productService.pushOder(oder);
+        response.sendRedirect("/istore?action=product");
+    }
+
+    private void cartList(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        List<CartDetailDTO> cartDetailDTOS = productService.cartDetail();
+        request.setAttribute("cartDetailDTOS", cartDetailDTOS);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/cart.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void searchProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        String search = request.getParameter("search");
+        List<Product> listProduct = productService.search(search);
+        request.setAttribute("listProduct", listProduct);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/product.jsp");
+        dispatcher.forward(request, response);
+    }
+
+    private void payProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("product/pay.jsp");
+        dispatcher.forward(request, response);
+
+    }
+    private void deleteProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        int productId = Integer.parseInt(request.getParameter("productId"));
+
+        boolean isDelete = productService.DeleteOder(productId);
+        if (isDelete) {
+            response.sendRedirect("/istore?action=cart");
+        }
     }
 }

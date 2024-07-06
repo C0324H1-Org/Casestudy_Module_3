@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -22,9 +21,20 @@
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 48
+            'wght' 600,
+            'GRAD' 00,
+            'opsz' 48;
+            width: 40px;
+            color: black;
+        }
+
+        .material-symbols-outlined:hover {
+            font-variation-settings: 'FILL' 0,
+            'wght' 600,
+            'GRAD' 00,
+            'opsz' 48;
+            width: 40px;
+            color: white;
         }
 
         * {
@@ -906,16 +916,23 @@
 
         /* contact */
         .iphone {
-            width: 50%;
+            width : 50%;
             height: 70%;
+        }
+        .iconbuy {
+            background: white;
+            height: 35px;
+        }
+        .iconbuy:hover {
+            background: #9f9e9e;
         }
     </style>
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
 <div class="top-navbar">
-    <p>WELCOME TO ORANGE SHOP</p>
     <div class="icons">
        <span class="material-symbols-outlined">
 person
@@ -939,7 +956,7 @@ person
 
     </div>
     <div class="img">
-        <img src="/images/iphone15promax.png.webp" alt="">
+        <img src="/iphone/iphone15pro.png" alt="">
     </div>
 </section>
 
@@ -953,7 +970,6 @@ person
                     <div class="card-body">
                         <h3 class="text-center">${product.productName}</h3>
                         <p class="text-center">${product.producer}</p>
-                        <p class="text-center">${product.description}</p>
                         <div class="star text-center">
                             <i class="fa-solid fa-star checked"></i>
                             <i class="fa-solid fa-star checked"></i>
@@ -961,76 +977,77 @@ person
                             <i class="fa-solid fa-star checked"></i>
                             <i class="fa-solid fa-star checked"></i>
                         </div>
-                        <h2>${product.price}$
-                            <span class="material-symbols-outlined">add_shopping_cart</span>
-                            <form action="oder?action=${product.id}" method="post">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop">
-                                    <input type="hidden" name="id" value="${product.productId}">
-                                    <input type="hidden" name="name" value="${product.productName}">
-                                    <input type="hidden" name="description" value="${product.description}">
-                                    <input type="hidden" name="image" value="${product.image}">
-
-                                </button>
-                            </form>
-
+                        <h2 style="font-size: 20px">${product.price}$
+                            <button style="display: flex;margin-left: auto" type="button" class="btn btn-success iconbuy"  data-bs-toggle="modal"
+                                    data-bs-target="#buyProduct${product.productId}">
+                                <span class="material-symbols-outlined ">add_shopping_cart</span>
+                            </button>
                         </h2>
 
                     </div>
                 </div>
             </div>
-            <%--            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"--%>
-            <%--                 aria-labelledby="staticBackdropLabel" aria-hidden="true">--%>
-            <%--                <div class="modal-dialog">--%>
-            <%--                    <div class="modal-content">--%>
-            <%--                            &lt;%&ndash;          form nằm đây      &ndash;%&gt;--%>
-            <%--                        <form>--%>
-            <%--                            <div class="modal-header">--%>
-            <%--                                <h4 class="modal-title">Add Employee</h4>--%>
+            <div class="modal fade" id="buyProduct${product.productId}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                            <%--          form nằm đây      --%>
+                        <form action="istore?action=buy" method="post"  >
+                            <input type="hidden" name="productId" value="${product.productId}"/>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Buy product</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container" id="product-cards2">
+                                    <h1 class="text-center"></h1>
+                                    <div class="col-12" style="text-align: center; ">
+                                        <div class="row">
+                                            <img src="${product.image}" alt="">
+                                            <h3 class="text-center">${product.productName}</h3>
+                                            <div class="star text-center">
+                                                <select name="color">
+                                                    <option value="1">Đỏ</option>
+                                                    <option value="2">Xanh</option>
+                                                    <option value="3">Xanh lá</option>
+                                                </select>
+                                                <select name="ram">
+                                                    <option value="1">4G</option>
+                                                    <option value="2">8G</option>
+                                                    <option value="3">12G</option>
+                                                </select>
+                                                <select name="rom">
+                                                    <option value="1">256G</option>
+                                                    <option value="2">512G</option>
+                                                    <option value="3">1T</option>
+                                                </select>
+                                            </div>
+                                            <input type="hidden" name="display" value="6.7 inch">Display : 6.7 inch</input><br>
+                                            <input type="hidden" name="battery" value="4500 mah">Battery: 4500 mah</input><br>
+                                            <input type="hidden" name="camera" value="40 MP">Camera: 40 PM</input>
+                                            <h2>${product.price} <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 30px;">
 
-            <%--                            </div>--%>
-            <%--                            <div class="modal-body">--%>
-            <%--                                <div class="container" id="product-cards2">--%>
-            <%--                                    <h1 class="text-center">IPhones</h1>--%>
-            <%--                                    <div class="col-12" style="text-align: center; ">--%>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success iconbuy"  data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop">
+                                    <span class="material-symbols-outlined ">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </form>
 
-            <%--                                        <img src="${product.image}" alt="">--%>
-            <%--                                        <h3 class="text-center">${product.productName}</h3>--%>
-            <%--                                        <p class="text-center">${product.producer}</p>--%>
-            <%--                                        <p class="text-center">${product.description}</p>--%>
-            <%--                                        <div class="star text-center">--%>
-            <%--                                            <i class="fa-solid fa-star checked"></i>--%>
-            <%--                                            <i class="fa-solid fa-star checked"></i>--%>
-            <%--                                            <i class="fa-solid fa-star checked"></i>--%>
-            <%--                                            <i class="fa-solid fa-star checked"></i>--%>
-            <%--                                            <i class="fa-solid fa-star checked"></i>--%>
-            <%--                                        </div>--%>
-            <%--                                        <h2>${product.price} <span><li class="fa-solid fa-cart-shopping"></li></span></h2>--%>
+                    </div>
+                </div>
+            </div>
 
-
-            <%--                                    </div>--%>
-            <%--                                    <div class="row" style="margin-top: 30px;">--%>
-
-            <%--                                    </div>--%>
-            <%--                                </div>--%>
-            <%--                            </div>--%>
-            <%--                            <div class="modal-footer">--%>
-            <%--                                <form action="/oder?action=addCart" method="post">--%>
-            <%--                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>--%>
-            <%--                                    <button type="submit" class="btn btn-success" data-bs-toggle="modal">--%>
-            <%--                                        <span class="material-symbols-outlined">add_shopping_cart</span>--%>
-            <%--                                    </button>--%>
-            <%--                                </form>--%>
-            <%--                            </div>--%>
-            <%--                        </form>--%>
-
-            <%--                    </div>--%>
-            <%--                </div>--%>
-            <%--            </div>--%>
         </c:forEach>
     </div>
 </div>
-
 <section class="home">
     <div class="content">
         <h1><span>LapTop</span>
@@ -1043,33 +1060,102 @@ person
         <div class="btn">
             <button>Shop Now</button>
         </div>
+
     </div>
     <div class="img">
         <img src="/images/0025006_macbook-pro-13-inch-m2-10-core-8gb-ram-256gb-ssd-chinh-hang-cu-dep.png" alt="">
     </div>
 </section>
 <div class="container" id="product-cards1">
-    <h1 class="text-center">IPhones</h1>
+    <h1 class="text-center">Laptops</h1>
     <div class="row" style="margin-top: 30px;">
-        <div class="col-md-3 py-3 py-md-0">
-            <div class="card">
-                <img src="/images/p6.png" alt="">
-                <div class="card-body">
-                    <h3 class="text-center">Iphone 13 pro</h3>
-                    <p class="text-center">Lorem ipsum dolor sit amet.</p>
-                    <div class="star text-center">
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
-                        <i class="fa-solid fa-star checked"></i>
+        <c:forEach var="mac" items="${listProductMac}">
+            <div class="col-md-3 py-3 py-md-0">
+                <div class="card">
+                    <img src="${mac.image}" alt="">
+                    <div class="card-body">
+                        <h3 class="text-center">${mac.productName}</h3>
+                        <p class="text-center">${mac.producer}</p>
+                        <p class="text-center">${mac.description}</p>
+                        <div class="star text-center">
+                            <i class="fa-solid fa-star checked"></i>
+                            <i class="fa-solid fa-star checked"></i>
+                            <i class="fa-solid fa-star checked"></i>
+                            <i class="fa-solid fa-star checked"></i>
+                            <i class="fa-solid fa-star checked"></i>
+                        </div>
+                        <h2>${mac.price}$
+                            <button style="display: flex;margin-left: auto" type="button" class="btn btn-success iconbuy"  data-bs-toggle="modal"
+                                    data-bs-target="#buyProductMac${mac.productId}">
+                                <span class="material-symbols-outlined ">add_shopping_cart</span>
+                            </button>
+
+                        </h2>
+
                     </div>
-                    <h2>$1000 <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
                 </div>
             </div>
-        </div>
+            <div class="modal fade" id="buyProductMac${mac.productId}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                            <%--          form nằm đây      --%>
+                        <form action="istore?action=buy" method="post"  >
+                            <input type="hidden" name="productId" value="${mac.productId}"/>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Buy product</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container" id="product-cards3">
+                                    <h1 class="text-center"></h1>
+                                    <div class="col-12" style="text-align: center; ">
+                                        <div class="row">
+                                            <img src="${mac.image}" alt="">
+                                            <h3 class="text-center">${mac.productName}</h3>
+                                            <div class="star text-center">
+                                                <select name="color">
+                                                    <option value="1">Đỏ</option>
+                                                    <option value="2">Xanh</option>
+                                                    <option value="3">Xanh lá</option>
+                                                </select>
+                                                <select name="ram">
+                                                    <option value="1">4G</option>
+                                                    <option value="2">8G</option>
+                                                    <option value="3">12G</option>
+                                                </select>
+                                                <select name="rom">
+                                                    <option value="1">256G</option>
+                                                    <option value="2">512G</option>
+                                                    <option value="3">1T</option>
+                                                </select>
+                                            </div>
+                                            <input type="hidden" name="display" value="6.7 inch">Display : 6.7 inch</input><br>
+                                            <input type="hidden" name="battery" value="4500 mah">Battery: 4500 mah</input><br>
+                                            <input type="hidden" name="camera" value="40 MP">Camera: 40 PM</input>
+                                            <h2>${mac.price} <span><li class="fa-solid fa-cart-shopping"></li></span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 30px;">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-success iconbuy"  data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop">
+                                    <span class="material-symbols-outlined ">add_shopping_cart</span>
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
 </div>
+
 <div class="container" id="other-cards">
     <div class="row">
         <div class="col-md-6 py-3 py-md-0">
@@ -1122,7 +1208,6 @@ person
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
 <a href="#" class="arrow"><i><img src="/images/arrow.png" alt=""></i></a>
-
 
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"

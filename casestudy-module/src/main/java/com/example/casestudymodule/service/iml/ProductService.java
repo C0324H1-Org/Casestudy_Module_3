@@ -1,6 +1,9 @@
 package com.example.casestudymodule.service.iml;
 
+import com.example.casestudymodule.model.CartDetailDTO;
+import com.example.casestudymodule.model.Oder;
 import com.example.casestudymodule.model.Product;
+import com.example.casestudymodule.model.ProductDetail;
 import com.example.casestudymodule.repositories.IProductRepositories;
 import com.example.casestudymodule.repositories.iml.ProductRepositories;
 import com.example.casestudymodule.service.IProductService;
@@ -14,5 +17,50 @@ public class ProductService implements IProductService {
     @Override
     public List<Product> selectAllProduct() throws SQLException {
         return productRepositories.selectAll();
+    }
+
+    @Override
+    public void buyProduct(ProductDetail productDetail) throws SQLException {
+        productRepositories.buyProduct(productDetail);
+    }
+
+    @Override
+    public List<CartDetailDTO> cartDetail() {
+        return productRepositories.cartDetail();
+    }
+
+    @Override
+    public int searchByIdCustomer() {
+        return productRepositories.searchByIdCustomer();
+    }
+
+    @Override
+    public void pushOder(Oder oder) {
+        productRepositories.pushOder(oder);
+    }
+
+    @Override
+    public int searchByIdProduct() {
+        return productRepositories.searchByIdProduct();
+    }
+
+    @Override
+    public List<Product> selectAllProductMac() {
+        return productRepositories.selectAllProductMac();
+    }
+
+    @Override
+    public List<Product> selectAll() {
+        return productRepositories.selectAllItem();
+    }
+
+    @Override
+    public List<Product> search(String search) {
+        return productRepositories.search(search);
+    }
+
+    @Override
+    public boolean DeleteOder(int id) {
+        return productRepositories.DeleteOder(id);
     }
 }
