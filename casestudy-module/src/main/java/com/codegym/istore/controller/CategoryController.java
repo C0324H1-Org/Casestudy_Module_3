@@ -32,6 +32,6 @@ public class CategoryController extends HttpServlet {
         req.setAttribute("listProduct", products);
         req.setAttribute("categories", categories);
         req.setAttribute("tag", idCategory);
-        req.getRequestDispatcher("product/index.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/view/product/index.jsp").forward(req, resp);
     }
 }

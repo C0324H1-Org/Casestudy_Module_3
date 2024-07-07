@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đặt hàng thành công</title>
+    <title>Order Success</title>
     <style>
         /* Reset default styles */
         * {
@@ -72,7 +72,7 @@
     <div class="notification">
         <h2>Đặt hàng thành công!</h2>
         <p>Cảm ơn bạn đã đặt hàng của chúng tôi.</p>
-        <a href="istore" class="abc">Quay lại trang chủ</a>
+        <a href="i-store" class="abc">Quay lại trang chủ</a>
     </div>
 </div>
 </body>

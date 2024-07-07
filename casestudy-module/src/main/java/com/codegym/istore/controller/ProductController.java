@@ -113,21 +113,21 @@ public class ProductController extends HttpServlet {
         request.setAttribute("listProduct", listProduct);
         List<Product> listProductMac = productService.selectAllProductMac();
         request.setAttribute("listProductMac", listProductMac);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/product/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/home/index.jsp");
         dispatcher.forward(request, response);
     }
 
     private void listIphone(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Product> listProduct = productService.selectAllProduct();
         request.setAttribute("listProduct", listProduct);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/product/index.jsp");
         dispatcher.forward(request, response);
     }
 
     private void listMacbook(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Product> listProduct = productService.selectAllProductMac();
         request.setAttribute("listProduct", listProduct);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/product/index.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -142,7 +142,7 @@ public class ProductController extends HttpServlet {
         request.setAttribute("categories", categories);
         request.setAttribute("tag", idCategory);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/product/index.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -164,13 +164,13 @@ public class ProductController extends HttpServlet {
         int customerId = productService.searchByIdCustomer();
         Oder oder = new Oder(customerId, productId);
         productService.pushOder(oder);
-        response.sendRedirect("/istore");
+        response.sendRedirect("/i-store");
     }
 
     private void cartList(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<CartDetailDTO> cartDetailDTOS = productService.cartDetail();
         request.setAttribute("cartDetailDTOS", cartDetailDTOS);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/cart/index.jsp");
         dispatcher.forward(request, response);
     }
 
@@ -178,12 +178,12 @@ public class ProductController extends HttpServlet {
         String search = request.getParameter("search");
         List<Product> listProduct = productService.search(search);
         request.setAttribute("listProduct", listProduct);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/index.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/product/index.jsp");
         dispatcher.forward(request, response);
     }
 
     private void payProduct(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("product/order-confirmation.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/view/order/order-confirmation.jsp");
         dispatcher.forward(request, response);
 
     }
@@ -198,7 +198,7 @@ public class ProductController extends HttpServlet {
 
         boolean isDelete = productService.DeleteOder(productId);
         if (isDelete) {
-            response.sendRedirect("/istore?action=cart");
+            response.sendRedirect("/i-store?action=cart");
         }
     }
 

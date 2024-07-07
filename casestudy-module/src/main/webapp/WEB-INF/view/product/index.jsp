@@ -15,7 +15,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Product</title>
-    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -934,10 +934,8 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 </head>
 <body>
-<%@ include file="/WEB-INF/view/common/navbar.jsp" %>
-
-<jsp:include page="../common/navbar.jsp"></jsp:include>
-<div class="product" style="padding-top: 100px">
+<jsp:include page="/WEB-INF/view/common/navbar.jsp"></jsp:include>
+<div class="product" style="padding-top: 1px">
 <div class="container">
     <div class="d-grid gap-2 d-md-block m-3">
         <div class="dropdown">
@@ -953,14 +951,6 @@
                     </li>
                 </c:forEach>
             </ul>
-    <div class="d-grid gap-2 d-md-block m-3" >
-        <div class="d-flex">
-            <form action="istore?action=iphone" method="post">
-                <button type="submit" class="btn btn-outline-dark"><img src="iphone/iphone15pro.png" alt="" width="30px" height="40px"/>Iphone</button>
-            </form>
-            <form action="istore?action=macbook" method="post">
-                <button type="submit" class="btn btn-outline-dark"><img src="mac/mac16.png" alt="" width="30px" height="40px"/>MacBook</button>
-            </form>
         </div>
     </div>
     <div class="row">
@@ -987,7 +977,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                             <%--          form nằm đây      --%>
-                        <form action="istore?action=buy" method="post">
+                        <form action="i-store?action=buy" method="post">
                             <input type="hidden" name="productId" value="${product.productId}"/>
                             <div class="modal-header">
                                 <h4 class="modal-title">Buy product</h4>
@@ -1048,8 +1038,7 @@
     </div>
 </div>
 </div>
-
-<%@ include file="/WEB-INF/view/common/footer.jsp" %>
+    <jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

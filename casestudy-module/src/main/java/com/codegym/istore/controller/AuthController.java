@@ -30,7 +30,10 @@ public class AuthController extends HttpServlet {
                 response.setContentType("text/html,charset=utf-8");
                 HttpSession session = request.getSession();
                 session.removeAttribute("user");
-                response.sendRedirect("/istore");
+                response.sendRedirect("/i-store");
+                break;
+            case "register":
+                request.getRequestDispatcher("/WEB-INF/view/auth/register.jsp").forward(request, response);
                 break;
             default:
                 request.getRequestDispatcher("/WEB-INF/view/common/error.jsp").forward(request, response);
@@ -59,7 +62,7 @@ public class AuthController extends HttpServlet {
                 }else{
                     HttpSession session = request.getSession();
                     session.setAttribute("user", user);
-                    response.sendRedirect("/istore");
+                    response.sendRedirect("/i-store");
                 }
                 break;
             default:

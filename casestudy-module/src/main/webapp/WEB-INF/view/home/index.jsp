@@ -6,9 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="../../../assets/css/style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie.=edge">
+    <title>Home</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -934,7 +934,7 @@
 </head>
 <body>
 
-<jsp:include page="../common/navbar.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/view/common/navbar.jsp"></jsp:include>
 <section class="home">
     <div class="content" style="position: relative">
         <h1><span>Iphone </span>
@@ -945,7 +945,7 @@
             <br>From 15/05/2024 to 20/05/2024
         </p>
         <div class="btn">
-            <button onclick="window.location.href='/istore?action=product'">Shop Now</button>
+            <button onclick="window.location.href='/i-store?action=product'">Shop Now</button>
         </div>
 
     </div>
@@ -953,13 +953,13 @@
         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="/iphone/iphone13abc.png" class="d-block w-100" alt="...">
+                    <img src="/assets/img/iphone/iphone13abc.png"/>" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="/mac/mac15.png" class="d-block w-100" alt="...">
+                    <img src="/assets/img/mac/mac15.png"/>" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="/images/w1.png" class="d-block w-100" alt="...">
+                    <img src="/assets/img/common/w1.png"/>" class="d-block w-100" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -1006,7 +1006,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                             <%--          form nằm đây      --%>
-                        <form action="istore?action=buy" method="post"  >
+                        <form action="i-store?action=buy" method="post"  >
                             <input type="hidden" name="productId" value="${product.productId}"/>
                             <div class="modal-header">
                                 <h4 class="modal-title">Buy product</h4>
@@ -1077,7 +1077,7 @@
 
     </div>
     <div class="img">
-        <img src="/images/0025006_macbook-pro-13-inch-m2-10-core-8gb-ram-256gb-ssd-chinh-hang-cu-dep.png" alt="">
+        <img src="/assets/img/common/0025006_macbook-pro-13-inch-m2-10-core-8gb-ram-256gb-ssd-chinh-hang-cu-dep.png" alt="">
     </div>
 </section>
 <div class="container" id="product-cards1">
@@ -1114,7 +1114,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                             <%--          form nằm đây      --%>
-                        <form action="istore?action=buy" method="post"  >
+                        <form action="i-store?action=buy" method="post"  >
                             <input type="hidden" name="productId" value="${mac.productId}"/>
                             <div class="modal-header">
                                 <h4 class="modal-title">Buy product</h4>
@@ -1174,7 +1174,7 @@
     <div class="row">
         <div class="col-md-6 py-3 py-md-0">
             <div class="card">
-                <img src="/images/c1.png" alt="">
+                <img src="/assets/img/common/c1.png" alt="">
                 <div class="card-img-overlay">
                     <h3>Best Laptop</h3>
                     <h5>Latest Collection</h5>
@@ -1185,7 +1185,7 @@
         </div>
         <div class="col-md-6 py-3 py-md-0">
             <div class="card">
-                <img src="/images/c2.png" alt="">
+                <img src="/assets/img/common/c2.png" alt="">
                 <div class="card-img-overlay">
                     <h3>Best Headphone</h3>
                     <h5>Latest Collection</h5>
@@ -1220,9 +1220,8 @@
         </div>
     </div>
 </div>
-<jsp:include page="../common/footer.jsp"></jsp:include>
-<a href="#" class="arrow"><i><img src="/images/arrow.png" alt=""></i></a>
-
+<jsp:include page="/WEB-INF/view/common/footer.jsp"></jsp:include>
+<a href="#" class="arrow"><i><img src="/assets/img/common/arrow.png" alt=""></i></a>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
