@@ -16,7 +16,7 @@
                     <p>
                         295 Nguyễn Tất Thành <br>
                         Đà Nẵng <br>
-                        <img src="/images/c5.png" style="width: 20px">Viêt Nam <br>
+                        <img src="/images/images.png" style="width: 20px">Viêt Nam <br>
                     </p>
                     <strong>Phone:</strong> <a href="#">+09999999999</a><br>
                     <strong>Email:</strong> orangeshop@gmail.com <br>

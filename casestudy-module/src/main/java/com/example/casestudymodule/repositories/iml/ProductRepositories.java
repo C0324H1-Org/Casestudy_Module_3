@@ -25,7 +25,7 @@ public class ProductRepositories implements IProductRepositories {
     private static final String SELECT_SEARCH = "SELECT * FROM casestudy_module_3.product WHERE product_name LIKE ?";
     private static final String DELETE_CART = "CALL  casestudy_module_3.delete_all_orders();";
     private static final String DELETE_PRODUCT_DETAIL = "CALL casestudy_module_3.delete_all_product();";
-    private static final String DELETE_BY_ID = "CALL casestudy_module_3.DeleteOrderDetails(?);";
+    private static final String DELETE_BY_ID = "CALL casestudy_module_3.DeleteOrderAndDetails(?);";
 
 
     @Override
@@ -83,6 +83,7 @@ public class ProductRepositories implements IProductRepositories {
             String customerAddress;
             int id;
             while (resultSet.next()) {
+                id=resultSet.getInt("order_id");
                 image = resultSet.getString("image");
                 productName = resultSet.getString("name");
                 producer = resultSet.getString("producer");
@@ -93,7 +94,7 @@ public class ProductRepositories implements IProductRepositories {
                 customerName = resultSet.getString("customer_name");
                 customerPhone = resultSet.getString("customer_phone");
                 customerAddress = resultSet.getString("customer_address");
-                id = resultSet.getInt("id");
+
                 cartDetailDTOs.add(new CartDetailDTO(image, productName, producer, ram, rom, color, price, customerName, customerPhone, customerAddress, id));
             }
         } catch (SQLException e) {
@@ -253,5 +254,8 @@ public class ProductRepositories implements IProductRepositories {
         return result;
 
     }
+
+
+
 }
 

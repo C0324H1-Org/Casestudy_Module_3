@@ -51,7 +51,7 @@
 
         /* top navbar */
         .top-navbar {
-            display: flex;
+            /*display: flex;*/
             justify-content: space-between;
         }
 
@@ -211,6 +211,7 @@
 
         .home .img {
             flex: 1 1 10%;
+            margin-right: 100px;
         }
 
         .home .img img {
@@ -932,17 +933,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-<div class="top-navbar">
-    <div class="icons">
-       <span class="material-symbols-outlined">
-person
-</span>
+<div class="top-navbar" style="position: fixed ;width: 100% ; z-index: 1000" >
 
-    </div>
 </div>
 <jsp:include page="navbar.jsp"></jsp:include>
 <section class="home">
-    <div class="content">
+    <div class="content" style="position: relative">
         <h1><span>Iphone </span>
             <br>
             Up To 50% Off
@@ -951,12 +947,32 @@ person
             <br>From 15/05/2024 to 20/05/2024
         </p>
         <div class="btn">
-            <button>Shop Now</button>
+            <button onclick="window.location.href='/istore?action=product'">Shop Now</button>
         </div>
 
     </div>
     <div class="img">
-        <img src="/iphone/iphone15pro.png" alt="">
+        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/iphone/iphone13abc.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/mac/mac15.png" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="/images/w1.png" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
     </div>
 </section>
 
