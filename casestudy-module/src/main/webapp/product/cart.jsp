@@ -952,14 +952,7 @@
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <body>
-<div class="top-navbar">
-    <p>WELCOME TO ORANGE SHOP</p>
-    <div class="icons">
-        <span class="material-symbols-outlined">
-person
-</span>
-    </div>
-</div>
+
 <jsp:include page="navbar.jsp"></jsp:include>
 <br>
 

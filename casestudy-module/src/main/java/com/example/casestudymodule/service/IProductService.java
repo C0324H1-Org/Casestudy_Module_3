@@ -32,4 +32,6 @@ public interface IProductService {
     void deleteAll();
 
     boolean DeleteOder(int id);
+
+
 }

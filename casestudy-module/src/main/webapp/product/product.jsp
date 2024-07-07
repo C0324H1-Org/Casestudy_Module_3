@@ -48,7 +48,7 @@
 
         /* top navbar */
         .top-navbar {
-            display: flex;
+            /*display: flex;*/
             justify-content: space-between;
         }
 
@@ -924,18 +924,11 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 </head>
 <body>
-<div class="top-navbar">
-    <p>WELCOME TO ORANGE SHOP</p>
-    <div class="icons">
-       <span class="material-symbols-outlined">
-person
-</span>
 
-    </div>
-</div>
-<%@ include file="/product/navbar.jsp" %>
+<jsp:include page="navbar.jsp"></jsp:include>
+<div class="product" style="padding-top: 100px">
 <div class="container">
-    <div class="d-grid gap-2 d-md-block m-3">
+    <div class="d-grid gap-2 d-md-block m-3" >
         <div class="d-flex">
             <form action="istore?action=iphone" method="post">
                 <button type="submit" class="btn btn-outline-dark"><img src="iphone/iphone15pro.png" alt="" width="30px" height="40px"/>Iphone</button>
@@ -1029,7 +1022,7 @@ person
         </c:forEach>
     </div>
 </div>
-
+</div>
 
 <%@ include file="/product/footer.jsp" %>
 </body>
