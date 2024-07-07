@@ -27,6 +27,7 @@ public class ProductRepository implements IProductRepository {
     private static final String DELETE_PRODUCT_DETAIL = "CALL casestudy_module_3.delete_all_product();";
     private static final String ORDER_BY_NAME_DESC = "select * from users ORDER BY name DESC;";
     private static final String ORDER_BY_NAME_ASC = "select * from users ORDER BY name ASC;";
+    private static final String GET_PRODUCT_BY_CATEGORY = "select * from product where category_id = ?";
 
 
     @Override
@@ -219,5 +220,38 @@ public class ProductRepository implements IProductRepository {
         }
         return products;
         }
+
+    @Override
+    public List<Product> getProductByCategory(int idCategory) {
+        List<Product> products = new ArrayList<>();
+        try{
+            PreparedStatement preparedStatement = BaseRepository.getConnection().prepareStatement(GET_PRODUCT_BY_CATEGORY);
+            preparedStatement.setString(1, String.valueOf(idCategory));
+
+            ResultSet rs = preparedStatement.executeQuery();
+
+            int idProduct;
+            String nameProduct;
+            String producer;
+            String description;
+            int price;
+            String image;
+
+            while(rs.next()){
+                idProduct = Integer.parseInt(rs.getString(1));
+                idCategory = Integer.parseInt(rs.getString(2));
+                nameProduct = rs.getString(3);
+                producer = rs.getString(4);
+                description = rs.getString(5);
+                price = rs.getInt(6);
+                image = rs.getString(7);
+                Product product = new Product(idProduct, idCategory,nameProduct, producer, description, price, image);
+                products.add(product);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return products;
     }
+}
 

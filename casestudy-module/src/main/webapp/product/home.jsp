@@ -34,7 +34,7 @@
             'GRAD' 00,
             'opsz' 48;
             width: 40px;
-            color: white;
+            color: gray;
         }
 
         * {
@@ -932,14 +932,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
-<div class="top-navbar">
-    <div class="icons">
-       <span class="material-symbols-outlined">
-person
-</span>
 
-    </div>
-</div>
 <jsp:include page="navbar.jsp"></jsp:include>
 <section class="home">
     <div class="content">

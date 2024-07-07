@@ -830,13 +830,13 @@
             }
         }
     </style>
-    <div class="top-navbar">
-        <p>WELCOME TO ORANGE SHOP</p>
-        <div class="icons">
-            <a href="login.jsp"><img src="/images/register.png" alt="" width="18px">Login</a>
+<%--    <div class="top-navbar">--%>
+<%--        <p>WELCOME TO ORANGE SHOP</p>--%>
+<%--        <div class="icons">--%>
+<%--            <a href="login.jsp"><img src="/images/register.png" alt="" width="18px">Login</a>--%>
 
-        </div>
-    </div>
+<%--        </div>--%>
+<%--    </div>--%>
 
    <jsp:include page="navbar.jsp"></jsp:include>
     <div class="container py-4">
@@ -847,30 +847,25 @@
             ">
                     <div class="card-body p-5 shadow-5 text-center">
                         <h2 class="fw-bold mb-5">Sign in now</h2>
-                        <form action="loginstore" method="post" >
-
+                        <form action="${pageContext.request.contextPath}/login" method="post" >
+                            <p class="text-danger">${mess}</p>
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="email" id="form3Example3" class="form-control" />
-                                <label class="form-label" for="form3Example3">Email address</label>
+                                <input name="username" type="text" id="form3Example3" class="form-control" />
+                                <label class="form-label" for="form3Example3">Username</label>
                             </div>
-
                             <div data-mdb-input-init class="form-outline mb-4">
-                                <input type="password" id="form3Example4" class="form-control" />
+                                <input name="password" type="password" id="form3Example4" class="form-control" />
                                 <label class="form-label" for="form3Example4">Password</label>
                             </div>
-
-
                             <div class="form-check d-flex justify-content-center mb-4">
                                 <input class="form-check-input   me-2" type="checkbox" value="" id="form2Example33" checked />
                                 <label class="form-check-label" for="form2Example33">
                                     Subscribe to our newsletter
                                 </label>
                             </div>
-
-
-                           <a href="istore" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
+                           <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block mb-4">
                                 Sign in
-                        </a>
+                           </button>
 
                         </form>
                     </div>

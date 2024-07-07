@@ -6,7 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
@@ -29,9 +28,20 @@
     <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 48
+            'wght' 600,
+            'GRAD' 00,
+            'opsz' 48;
+            width: 40px;
+            color: black;
+        }
+
+        .material-symbols-outlined:hover {
+            font-variation-settings: 'FILL' 0,
+            'wght' 600,
+            'GRAD' 00,
+            'opsz' 48;
+            width: 40px;
+            color: gray;
         }
 
         * {
@@ -164,7 +174,7 @@
         }
 
         .dropdown-menu li a {
-            color: white;
+            color: black;
             transition: 0.5s ease;
         }
 
@@ -924,25 +934,22 @@
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"/>
 </head>
 <body>
-<div class="top-navbar">
-    <p>WELCOME TO ORANGE SHOP</p>
-    <div class="icons">
-       <span class="material-symbols-outlined">
-person
-</span>
-
-    </div>
-</div>
 <%@ include file="/product/navbar.jsp" %>
 <div class="container">
     <div class="d-grid gap-2 d-md-block m-3">
-        <div class="d-flex">
-            <form action="istore?action=iphone" method="post">
-                <button type="submit" class="btn btn-outline-dark"><img src="iphone/iphone15pro.png" alt="" width="30px" height="40px"/>Iphone</button>
-            </form>
-            <form action="istore?action=macbook" method="post">
-                <button type="submit" class="btn btn-outline-dark"><img src="mac/mac16.png" alt="" width="30px" height="40px"/>MacBook</button>
-            </form>
+        <div class="dropdown">
+            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Category
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <c:forEach items="${categories}" var="categories">
+                    <li class="text-white ${tag == categories.idCategory ? "active" : ""}">
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/category?idCategory=${categories.idCategory}">
+                                ${categories.nameCategory}
+                        </a>
+                    </li>
+                </c:forEach>
+            </ul>
         </div>
     </div>
     <div class="row">

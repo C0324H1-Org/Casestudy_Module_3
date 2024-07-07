@@ -26,4 +26,6 @@ public interface IProductService {
     List<Product> selectAll();
 
     List<Product> search(String search);
+
+    List<Product> getProductByCategory(int idCategory);
 }

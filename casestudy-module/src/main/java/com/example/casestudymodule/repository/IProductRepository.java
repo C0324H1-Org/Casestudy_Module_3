@@ -27,4 +27,6 @@ public interface IProductRepository {
     List<Product> selectAllItem();
 
     List<Product> search(String search);
+
+    List<Product> getProductByCategory(int idCategory);
 }

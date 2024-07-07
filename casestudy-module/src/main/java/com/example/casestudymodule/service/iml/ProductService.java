@@ -59,4 +59,9 @@ public class ProductService implements IProductService {
     public List<Product> search(String search) {
         return productRepository.search(search);
     }
+
+    @Override
+    public List<Product> getProductByCategory(int idCategory) {
+        return productRepository.getProductByCategory(idCategory);
+    }
 }

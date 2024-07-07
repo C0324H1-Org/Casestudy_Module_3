@@ -1,10 +1,9 @@
 package com.example.casestudymodule.controller;
 
-import com.example.casestudymodule.model.CartDetailDTO;
-import com.example.casestudymodule.model.Oder;
-import com.example.casestudymodule.model.Product;
-import com.example.casestudymodule.model.ProductDetail;
+import com.example.casestudymodule.model.*;
+import com.example.casestudymodule.service.ICategoryService;
 import com.example.casestudymodule.service.IProductService;
+import com.example.casestudymodule.service.iml.CategoryService;
 import com.example.casestudymodule.service.iml.ProductService;
 
 import javax.servlet.RequestDispatcher;
@@ -22,6 +21,7 @@ import java.util.List;
 public class CustomerController extends HttpServlet {
 
     IProductService productService = new ProductService();
+    private static final ICategoryService categoryService = new CategoryService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -101,6 +101,14 @@ public class CustomerController extends HttpServlet {
     private void listProductAll(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
         List<Product> listProduct = productService.selectAll();
         request.setAttribute("listProduct", listProduct);
+
+        String idCategory = request.getParameter("idCategory");
+
+        List<Category> categories = categoryService.getAllCategory();
+
+        request.setAttribute("categories", categories);
+        request.setAttribute("tag", idCategory);
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("product/product.jsp");
         dispatcher.forward(request, response);
     }
